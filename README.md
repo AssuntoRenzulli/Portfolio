@@ -2,98 +2,93 @@
 <html lang="it">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<meta charset="UTF-8">
 <title>Portfolio Tecnico | Assunto Pio Renzulli</title>
 
 <style>
 
 body{
-font-family: Arial, sans-serif;
+font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+background:#f3f5f7;
 margin:0;
-background:#f4f6f7;
+padding:40px;
 color:#333;
 }
 
-header{
-background:#2c3e50;
-color:white;
-text-align:center;
-padding:60px 20px;
-}
-
-header h1{
-margin:0;
-font-size:2.5rem;
-}
-
-header p{
-opacity:0.9;
-}
-
-nav{
-background:#34495e;
-padding:15px;
-text-align:center;
-}
-
-nav a{
-color:white;
-margin:0 15px;
-text-decoration:none;
-font-weight:bold;
-}
-
-section{
-max-width:900px;
+.container{
+max-width:850px;
 margin:auto;
-padding:40px 20px;
-}
-
-h2{
-border-bottom:2px solid #2c3e50;
-padding-bottom:10px;
-}
-
-.card{
 background:white;
-padding:25px;
-margin-top:20px;
-border-radius:8px;
-box-shadow:0 2px 6px rgba(0,0,0,0.1);
+padding:40px;
+border-radius:10px;
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
 }
 
-.badge{
-display:inline-block;
-background:#f39c12;
-color:white;
-padding:5px 10px;
-border-radius:5px;
-font-size:0.8rem;
-margin-left:10px;
+h1{
+text-align:center;
+margin-bottom:5px;
 }
 
-.button{
-display:inline-block;
-margin-top:15px;
-padding:10px 15px;
-background:#2c7a7b;
-color:white;
+.subtitle{
+text-align:center;
+color:#777;
+margin-bottom:30px;
+}
+
+.notice{
+background:#fff4cc;
+padding:12px;
+border-radius:6px;
+text-align:center;
+margin-bottom:30px;
+font-size:0.9rem;
+}
+
+.section-title{
+margin-top:30px;
+margin-bottom:10px;
+font-weight:bold;
+color:#555;
+}
+
+.file-list{
+border-top:1px solid #e5e5e5;
+}
+
+.file{
+display:flex;
+align-items:center;
+padding:12px;
+border-bottom:1px solid #e5e5e5;
+transition:background 0.2s;
+}
+
+.file:hover{
+background:#f7f7f7;
+}
+
+.icon{
+width:30px;
+font-size:18px;
+}
+
+.file a{
 text-decoration:none;
-border-radius:5px;
+color:#2c3e50;
+flex:1;
+}
+
+.file span{
+font-size:0.8rem;
+color:#888;
 }
 
 footer{
-background:#2c3e50;
-color:white;
-text-align:center;
-padding:20px;
 margin-top:40px;
-}
-
-ul{
-line-height:1.6;
+text-align:center;
+font-size:0.8rem;
+color:#888;
 }
 
 </style>
@@ -102,168 +97,64 @@ line-height:1.6;
 
 <body>
 
-<header>
+<div class="container">
 
-<h1>Assunto Pio Renzulli</h1>
+<h1>Portfolio Tecnico</h1>
 
-<p>Portfolio tecnico | Ingegneria Ambientale</p>
+<p class="subtitle">Assunto Pio Renzulli</p>
 
-<p><span class="badge">Sito in costruzione</span></p>
+<div class="notice">
+⚠️ Questo archivio è attualmente <strong>in fase di costruzione</strong>.  
+Nuovi progetti e documenti tecnici verranno aggiunti progressivamente.
+</div>
 
-</header>
 
-<nav>
+<div class="section-title">Documenti</div>
 
-<a href="#profilo">Profilo</a>
-<a href="#progetti">Progetti</a>
-<a href="#vds">VDS Sostenibile</a>
-<a href="#contatti">Contatti</a>
+<div class="file-list">
 
-</nav>
+<div class="file">
+<div class="icon">📄</div>
+<a href="documenti/CV_Assunto_Renzulli.pdf" target="_blank">
+Curriculum Vitae
+</a>
+<span>PDF</span>
+</div>
 
-<section id="profilo">
-
-<h2>Profilo</h2>
-
-<div class="card">
-
-<p>
-Laureando magistrale in <strong>Ingegneria Ambientale (LM-35)</strong> presso
-l’Università degli Studi di Salerno con interesse per:
-</p>
-
-<ul>
-
-<li>gestione sostenibile dei sistemi territoriali</li>
-<li>monitoraggio ambientale e qualità dell’aria</li>
-<li>valutazione dei rischi ambientali</li>
-<li>pianificazione ambientale su area vasta</li>
-
-</ul>
-
-<p>
-Questo portfolio raccoglie alcuni progetti sviluppati durante il percorso
-universitario nell'ambito della sostenibilità ambientale e della gestione territoriale.
-</p>
+<div class="file">
+<div class="icon">📄</div>
+<a href="documenti/VDS_Sistema_Sostenibile.pdf" target="_blank">
+Progetto – VDS Sistema Sostenibile
+</a>
+<span>PDF</span>
+</div>
 
 </div>
 
-</section>
 
+<div class="section-title">Progetti Web</div>
 
+<div class="file-list">
 
-<section id="progetti">
-
-<h2>Progetti</h2>
-
-<div class="card">
-
-<h3>Progetto VDS – Sistema Sostenibile</h3>
-
-<p>
-Sistema di gestione sostenibile per la <strong>Valle del Sabato</strong> basato su
-un modello premiale volontario rivolto agli agricoltori per la gestione dei
-residui agricoli.
-</p>
-
-<p>
-Il progetto affronta il problema delle emissioni derivanti dalla combustione
-dei residui di castanicoltura e nocciocoltura attraverso un sistema integrato
-di pianificazione ambientale e incentivi alla gestione sostenibile.
-</p>
-
-<ul>
-
-<li>analisi delle pressioni ambientali territoriali</li>
-<li>valutazione degli impatti sulla qualità dell’aria</li>
-<li>sistema premiale per pratiche agricole sostenibili</li>
-<li>portale informativo e amministrativo</li>
-
-</ul>
-
-<a class="button" href="documenti/VDS_Sistema_Sostenibile.pdf" target="_blank">
-Scarica il progetto
+<div class="file">
+<div class="icon">🌐</div>
+<a href="progetti/Ultimo.html" target="_blank">
+Portale VDS Sostenibile
 </a>
+<span>HTML</span>
+</div>
 
 </div>
 
-</section>
-
-
-
-<section id="vds">
-
-<h2>Portale VDS Sostenibile</h2>
-
-<div class="card">
-
-<p>
-Il progetto è accompagnato dallo sviluppo di un <strong>portale web informativo
-e gestionale</strong> dedicato alla sostenibilità territoriale nella Valle del
-Sabato.
-</p>
-
-<p>
-Il sito integra elementi di:
-</p>
-
-<ul>
-
-<li>informazione ambientale</li>
-<li>gestione amministrativa delle adesioni</li>
-<li>monitoraggio territoriale tramite GIS</li>
-<li>partecipazione degli stakeholder locali</li>
-
-</ul>
-
-<p>
-Il portale è attualmente in fase di sviluppo e sarà progressivamente
-integrato in questo portfolio.
-</p>
-
-<a class="button" href="Ultimo.html" target="_blank">
-Apri il portale VDS
-</a>
-
-</div>
-
-</section>
-
-
-
-<section id="contatti">
-
-<h2>Contatti</h2>
-
-<div class="card">
-
-<p>Email: assuntorenzulli02@outlook.it</p>
-
-<p>
-LinkedIn:
-<a href="https://www.linkedin.com/in/assuntorenzulli" target="_blank">
-linkedin.com/in/assuntorenzulli
-</a>
-</p>
-
-<p>
-GitHub:
-<a href="https://github.com/AssuntoRenzulli" target="_blank">
-github.com/AssuntoRenzulli
-</a>
-</p>
-
-</div>
-
-</section>
 
 <footer>
 
-<p>Portfolio tecnico | Assunto Pio Renzulli</p>
-
-<p>Ultimo aggiornamento: 2026</p>
+Portfolio tecnico online  
+Ultimo aggiornamento: 2026
 
 </footer>
+
+</div>
 
 </body>
 
