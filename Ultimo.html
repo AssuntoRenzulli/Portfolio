@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/shpjs@latest/dist/shp.min.js"></script>
+
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Valle del Sabato - Sostenibilità</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .hero {
+      background: url(https://www.centritalianews.it/wp-content/uploads/2023/11/castagne_itinerario-Small.png) no-repeat center center/cover;
+      height: 100vh;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: center;
+      padding: 1rem;
+      z-index: 3;
+    }
+
+    .nav a {
+      color: #fff;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .nav a:hover {
+      color: #9be1a4;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="#contesto">Contesto</a>
+    <a href="#politica">Politica Ambientale</a>
+    <a href="#pianificazione">Pianificazione</a>
+    <a href="#attuazione">Attuazione</a>
+    <a href="#controllo">Controllo e Monitoraggio</a>
+    <a href="#riesame">Contribuisci al miglioramento</a>
+  </nav>
+
+  <section class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>Un futuro sostenibile nasce dalla nostra terra. "Qui coltiviamo e qui respiriamo"</h1>
+      <p>Questo portale è un punto d'incontro tra agricoltura, ambiente e innovazione. La Valle del Sabato merita un nuovo modello di sviluppo, più sano, più giusto, più nostro.</p>
+    </div>
+  </section>
+
+  <section id="contesto">
+  <h2>Contesto della Valle del Sabato</h2>
+  <p>La Valle del Sabato è un'area caratterizzata da un'intensa attività agricola, in particolare castanicoltura e nocciocoltura. Nei mesi di settembre e ottobre coincidenti con il periodo di raccolta, la combustione incontrollata dei residui agricoli influisce negativamente sulla qualità dell’aria, con livelli critici di PM10 e NOx. A tal riguardo l'obiettivo... </p>
+  
+  <h3>Parti interessate</h3>
+  <ul>
+    <li>Agricoltori locali</li>
+    <li>ARPAC (Agenzia Regionale per la Protezione Ambientale della Campania)</li>
+    <li>Ministero dell’Ambiente</li>
+    <li>Cittadini della Valle</li>
+    <li>Enti certificatori della sostenibilità</li>
+  </ul>
+</section>
+
+<section id="pianificazione">
+<div style="text-align: center;">
+  <h2>Pianificazione della Strategia di Sostenibilità</h2>
+  <p>L'impulso di pianificare una strategia sostenibile interviene a partire dall'individuazione e la valutazione della gestione delle attività agricole diffuse nel contesto territoriale inquadrandole nel sistema complesso e dinamico della sostenibilità. L’equilibrio tra i tre sotto-sistemi <strong>"ambientale , economico e sociale"</strong>, interconnessi ed indivisibili, deve essere garantito per consentire alla popolazione di riferimento di godere di un benessere completo e non parziale, ovvero una condizione che non sia solo equa, vivibile o realizzabile ma SOSTENIBILE e tale da garantire uno sviluppo nell'ottica del miglioramento della qualità della vita di ciascuno. In sintesi <strong>il monito "qui coltiviamo e qui respiriamo" sintetizza il tema di fondo che condiziona la fase di pianificazione</strong>, fulcro della strategia di gestione sostenibile, secondo un <strong>approccio proattivo e olistico</strong> tale da mitigare le cause e/o compensare gli effetti attuali ma soprattutto percepire anitcipatamente le tendenze ed i cambiamenti futuri. Ciò detto, risulta necessario pianificare pensando a delle azioni strategiche volte ad orientare la filosofia di base, le scelte modali e le azioni in maniera consapevolmente utile al perseguimento di obiettivi collettivi, organici ed integrati nel contesto territoriale.
+</div>
+
+<h3> Analisi ambientale iniziale</h3>
+
+<p>L’analisi ambientale ha evidenziato come la principale criticità sia rappresentata dalle <strong>emissioni inquinanti generate dalla combustione dei residui agricoli</strong>, una pratica ancora diffusa nella Valle del Sabato nei mesi di <strong>settembre e ottobre</strong>. Tale pratica coincide con la fase di pulizia dei terreni agricoli (soprattutto per la raccolta di castagne e nocciole), comportando il rilascio di notevoli quantità di <strong>PM10, NOx, CO e VOC</strong>, con un impatto diretto sulla qualità dell’aria.</p>
+
+<div style="text-align: center; margin: 2rem 0;">
+  <img src="C:\Users\assun\OneDrive - Università di Salerno\Documenti\Desktop\STTE\a\img\Immagine1.png" alt="Grafico PM10 Marzo 2022 - Marzo 2023" style="width: 70%; max-width: 600px; border: 1px solid #ccc; border-radius: 10px;" />
+  <p style="font-size: 0.9rem; color: #666;">Andamento medio giornaliero di PM10 - Rete di monitoraggio volontaria Aura http://www.mvobsv.org/air-quality-monitoring/ </p>
+</div>
+
+<p>Il D.Lgs. 155/2010, in recepimento della Direttiva 2008/50/CE sulla qualità dell’aria, stabilisce valori limite giornalieri per il PM10 (50 µg/m³), che vengono regolarmente superati nelle aree rurali della Valle durante tali periodi. La combustione incontrollata, oltre a costituire un illecito, aggrava il fenomeno dell’inquinamento atmosferico e mette a rischio la salute della popolazione locale.</p>
+
+<h4>Gestione alternativa dei residui agricoli</h4>
+<p>In ottemperanza al <strong>D.Lgs. 152/2006</strong>, parte IV sui rifiuti, e alla normativa regionale, sono state analizzate le modalità di gestione sostenibile dei residui legnosi. Si riportano in ordine di preferenza le diverse alternative:</p>
+<ul>
+  <li><strong>Cippatura in loco:</strong> consente il recupero del materiale come cippato per usi energetici o come pacciamatura</li>
+  <li><strong>Compostaggio aziendale:</strong> produzione di ammendanti naturali per l’autoconsumo</li>
+  <li><strong>Conferimento a impianti autorizzati:</strong> tracciabilità garantita e riutilizzo in filiere agroenergetiche (da considerare solo in caso di  </li>
+</ul>
+<div style="display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 1.5rem; justify-content: center;">
+
+  <!-- Cippatura -->
+  <div style="flex: 1 1 250px; max-width: 300px; text-align: center; border: 1px solid #e0e0e0; border-radius: 12px; padding: 1rem;">
+    <img src="C:\Users\assun\OneDrive - Università di Salerno\Documenti\Desktop\STTE\a\img\cippato_grande.jpg" alt="Ceppatura" style="width: 80px; margin-bottom: 0.5rem;" />
+    <h5>Cippatura</h5>
+    <p>Frantumazione meccanica dei residui in loco. Migliora il contenuto organico del suolo e previene l’emissione di inquinanti.</p>
+  </div>
+
+  <!-- Conferimento a impianto -->
+  <div style="flex: 1 1 250px; max-width: 300px; text-align: center; border: 1px solid #e0e0e0; border-radius: 12px; padding: 1rem;">
+    <img src="C:\Users\assun\OneDrive - Università di Salerno\Documenti\Desktop\STTE\a\img\compostaggio.jpg"alt="Conferimento" style="width: 80px; margin-bottom: 0.5rem;" />
+    <h5>Conferimento a impianto</h5>
+    <p>Trasferimento controllato dei residui presso impianti autorizzati per compostaggio o recupero energetico.</p>
+  </div>
+
+  <!-- Compostaggio -->
+  <div style="flex: 1 1 250px; max-width: 300px; text-align: center; border: 1px solid #e0e0e0; border-radius: 12px; padding: 1rem;">
+    <img src="C:\Users\assun\OneDrive - Università di Salerno\Documenti\Desktop\STTE\a\img\Screenshot 2025-05-26 213949.png" alt="Compostaggio" style="width: 80px; margin-bottom: 0.5rem;" />
+    <h5>Compostaggio aziendale</h5>
+    <p>Decomposizione controllata dei residui vegetali con produzione di compost da riutilizzare in campo.</p>
+  </div>
+
+</div>
+<p>Queste pratiche rappresentano un’alternativa concreta alla combustione, in linea con i principi dell’economia circolare.</p>
+
+<h4>Verso il rispetto dei suoli</h4>
+<p>L’analisi si conclude con una valutazione del potenziale di sostenibilità riferito alle più comuni pratiche di additivazione nutrizionale dei suoli nella fase di preparazione alla raccolta. Nello specifico questa analisi è utile ai fini della programmazione, definizione e delineazione delle tipologie di premialità che meglio soddisfino l'integrazione tra le esigenze del fruitore e l'ottimizzazione degli impatti derivanti dagli aspetti ambientali della concimazione.     dell Interventi chiave includono:</p>
+<ul>
+  <li>Stima del fabbisogno nutritivo addizionale dei castagneti e noccioleti </li>
+  <li>Indagare un campione sufficientemente rappresentativo dei fertilizzanti/additivi utilizzati </li>
+  <li>Introduzione di tecniche agronomiche conservative e a basso impatto nella fase di formazione </li>
+</ul>
+
+<p>Questa analisi iniziale rappresenta il punto di partenza per la definizione degli obiettivi ambientali specifici e la pianificazione operativa del sistema di gestione.</p>
+
+
+
+ <h3>Definizione degli obiettivi ambientali</h3>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem;">
+  <div style="border: 1px solid #ccc; border-radius: 8px; padding: 1rem; text-align: center; background-color: #f9f9f9;">
+    <img src="https://img.icons8.com/ios-filled/100/air-quality.png" alt="Riduzione combustione" style="width: 50px;" />
+    <h4>Riduzione Combustione</h4>
+    <p>Ridurre del <strong>70%</strong> la combustione incontrollata dei residui entro <strong>3 anni</strong>.</p>
+  </div>
+  <div style="border: 1px solid #ccc; border-radius: 8px; padding: 1rem; text-align: center; background-color: #f9f9f9;">
+    <img src="https://img.icons8.com/ios-filled/100/farm.png" alt="Coinvolgimento agricoltori" style="width: 50px;" />
+    <h4>Coinvolgimento Agricolo</h4>
+    <p>Coinvolgere almeno il <strong>60%</strong> degli agricoltori nei programmi di gestione sostenibile.</p>
+  </div>
+  <div style="border: 1px solid #ccc; border-radius: 8px; padding: 1rem; text-align: center; background-color: #f9f9f9;">
+    <img src="https://img.icons8.com/ios-filled/100/sprout.png" alt="Agricoltura sostenibile" style="width: 50px;" />
+    <h4>Pratiche sostenibili</h4>
+    <p>Tutelare la qualità di suolo e sottosuolo.</p>
+  </div>
+</div>
+ <div style="border: 1px solid #ccc; border-radius: 8px; padding: 1rem; text-align: center; background-color: #f9f9f9;">
+    <img src="C:\Users\assun\OneDrive - Università di Salerno\Documenti\Desktop\STTE\a\img\5383634.png" alt="Agricoltura sostenibile" style="width: 50px;" />
+    <h4>Pratiche sostenibili</h4>
+    <p>Aumentare <strong>la prevenzione del rischio incendi</strong> su area vasta.</p>
+  </div>
+</div>
+
+ text align:center <h3>Individuazione degli indicatori di prestazione</h3> text align:center
+<p>Per ciascun obiettivo ambientale sono definiti indicatori misurabili e monitorabili:</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem;">
+  <div style="border: 1px solid #ccc; border-radius: 8px; padding: 1rem; text-align: center; background-color: #eef7f1;">
+    <img src="https://img.icons8.com/ios-filled/100/tree-structure.png" alt="Pratiche virtuose" style="width: 50px;" />
+    <h4>Pratiche virtuose</h4>
+    <p>Numero di gestioni sostenibili adottate: ceppatura, conferimento, compostaggio.</p>
+  </div>
+  <div style="border: 1px solid #ccc; border-radius: 8px; padding: 1rem; text-align: center; background-color: #f0f4fa;">
+    <img src="C:\Users\assun\OneDrive - Università di Salerno\Documenti\Desktop\STTE\a\img\6872079.png" alt="PM10" style="width: 50px;" />
+    <h4>PM10 stagionale</h4>
+    <p>Monitoraggio mensile dei livelli di PM10 nei mesi di raccolta (settembre-ottobre).</p>
+  </div>
+  <div style="border: 1px solid #ccc; border-radius: 8px; padding: 1rem; text-align: center; background-color: #fff5e5;">
+    <img src="https://img.icons8.com/ios-filled/100/certificate.png" alt="Certificazione" style="width: 50px;" />
+    <h4>Adesioni certificate</h4>
+    <p>Numero di agricoltori registrati nel sistema di certificazione ambientale volontaria.</p>
+  </div>
+</div>
+
+
+  <h3>Elaborazione del programma operativo</h3>
+  <p>Include attività, scadenze, responsabilità e risorse. Le linee operative principali comprendono:</p>
+  <ul>
+    <li>Campagna di comunicazione ambientale</li>
+    <li>Formazione tecnica per agricoltori</li>
+    <li>Accordi volontari tra comuni e agricoltori</li>
+  </ul>
+
+  <h3>Pianificazione delle risorse e dei meccanismi premiali</h3>
+  <p>Il sistema di premialità si basa su due aliquote:</p>
+  <ul>
+    <li><strong>Aliquota fissa:</strong>Fitosanitari ecocompatibili</li><div style="text-align: center; margin-top: 1rem;">
+    <img src="C:\Users\assun\OneDrive - Università di Salerno\Documenti\Desktop\STTE\a\img\Immagine2.png" alt="Aliquota fissa" style="max-width: 300px; border-radius: 10px; border: 1px solid #ccc;" />
+  </div>
+    <li><strong>Aliquota variabile:</strong> Biofertilizzante </li>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-top: 1rem;">
+    <img src="C:\Users\assun\OneDrive - Università di Salerno\Documenti\Desktop\STTE\a\img\Immagine3.png" alt="Compostaggio" style="width: 300px; border-radius: 8px;" />
+    <img src="C:\Users\assun\OneDrive - Università di Salerno\Documenti\Desktop\STTE\a\img\Immagine4.png"style="width: 500px; border-radius: 8px;" />
+     <img src="C:\Users\assun\OneDrive - Università di Salerno\Documenti\Desktop\STTE\a\img\Immagine5.png"style="width: 300px; border-radius: 8px;" />
+ </div>
+</div>
+  </ul>
+
+  <p>Il punteggio è gestito tramite una dashboard e associato ad ogni appezzamento registrato.</p>
+</section>
+>
+  <!-- Es: <section id="contesto">...</section> -->
+<section id="attuazione" style="padding: 2rem;">
+  <h2>Attuazione e Adesione alla Strategia</h2>
+  <p>Questa sezione permette agli utenti di aderire formalmente alla strategia di sostenibilità, scaricare la modulistica necessaria e depositare la documentazione tramite identità digitale (SPID).</p>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 2rem;">
+    
+    <!-- Blocco download moduli -->
+    <div style="flex: 1 1 300px; background: #e7f7ea; padding: 1.5rem; border-radius: 12px; text-align: center;">
+      <h3>📄 Scarica moduli di adesione</h3>
+      <p>I moduli contengono i prerequisiti e le istruzioni per accedere al sistema di premialità.</p>
+      <a href="documenti/modulo_adesione.pdf" download style="display: inline-block; margin-top: 1rem; padding: 0.75rem 1.5rem; background: #4CAF50; color: white; border-radius: 6px; text-decoration: none; font-weight: bold;">📥 Scarica il modulo</a>
+    </div>
+
+    <!-- Blocco upload documentazione -->
+    <div style="flex: 1 1 300px; background: #f0f8ff; padding: 1.5rem; border-radius: 12px; text-align: center;">
+      <div style="flex: 1 1 300px; background: #f0f8ff; padding: 1.5rem; border-radius: 12px; text-align: center;">
+  <h3>📤 Deposita documentazione - Area Riservata</h3>
+  <p>Carica documenti relativi alla tracciabilità, richieste o istanze, previa autenticazione SPID.</p>
+
+  <!-- Logo SPID -->
+  <div style="margin: 1rem 0;">
+    <img src="C:\Users\assun\OneDrive - Università di Salerno\Documenti\Desktop\STTE\a\img\Screenshot 2025-05-25 094526.png" alt="SPID login" style="width: 300px; height: auto;" />
+  </div>
+  </p>
+</div>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="controllo">
+  <h2>Controllo e Monitoraggio Ambientale</h2>
+  <p>Questa sezione consente di monitorare visivamente l'andamento delle azioni sul territorio, attraverso la mappa interattiva e l’upload di file GeoJSON (.geojson o .json) che rappresentano appezzamenti agricoli, aree a rischio o zone certificate.</p>
+</section>
+<section id="controllo" style="padding: 2rem;">
+  <h2>🗺️ Sistema Informativo Territoriale - Valle del Sabato</h2>
+  <p>Consulta o carica dati territoriali in formato <strong>KML</strong> per esplorare le dinamiche ambientali, agricole e paesaggistiche del territorio.</p>
+
+  <!-- Upload KML -->
+  <div style="margin: 1rem 0;">
+    <label for="kmlUploader"><strong>📂 Carica file KML da sovrapporre:</strong></label><br />
+    <input type="file" id="kmlUploader" accept=".kml" multiple />
+  </div>
+
+  <!-- Mappa -->
+  <div id="map" style="height: 600px; border: 2px solid #ccc; border-radius: 8px;"></div>
+
+  <!-- Libreria fittizia di file KML -->
+  <h3 style="margin-top: 2rem;">📚 Libreria informativa – Dataset disponibili</h3>
+  <ul style="line-height: 2;">
+    <li><a href="kml/zona_protetta.kml" download>🌿 Confini area protetta</a></li>
+    <li><a href="kml/monitoraggio_aria.kml" download>💨 Punti di monitoraggio qualità dell'aria</a></li>
+    <li><a href="kml/appezzamenti_certificati.kml" download>🌰 Appezzamenti agricoli certificati</a></li>
+    <li><a href="kml/rete_viaria.kml" download>🛣️ Rete viaria secondaria</a></li>
+    <li><a href="kml/dighe_e_sorgenti.kml" download>💧 Risorse idriche superficiali</a></li>
+  </ul>
+</section>
+
+
+<!-- Leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- Plugin KML per Leaflet -->
+<script src="https://unpkg.com/leaflet-omnivore@0.3.4/leaflet-omnivore.min.js"></script>
+
+<script>
+  // Inizializzazione mappa satellitare
+  const map = L.map('map').setView([40.9, 14.8], 12);
+
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles © Esri'
+  }).addTo(map);
+
+  // Listener per il caricamento multiplo di KML
+  document.getElementById('kmlUploader').addEventListener('change', function (e) {
+    const files = e.target.files;
+    for (let i = 0; i < files.length; i++) {
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        try {
+          const kmlLayer = omnivore.kml.parse(event.target.result);
+          kmlLayer.addTo(map);
+        } catch (error) {
+          alert("Errore durante la lettura del file " + files[i].name);
+          console.error(error);
+        }
+      };
+      reader.readAsText(files[i]);
+    }
+  });
+</script>
+<section id="riesame" style="padding: 2rem;">
+
+  <h2>🔁 Riesame e Miglioramento Continuo</h2>
+  <p>Il riesame ambientale è lo strumento con cui vengono valutati gli esiti delle attività attuate, verificata l'efficacia della strategia e definite le azioni di miglioramento.</p>
+
+  <!-- Fasi del riesame -->
+  <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1.5rem;">
+
+    <div style="flex: 1 1 250px; background: #f7f9fc; padding: 1rem; border-radius: 8px;">
+      <h4>🔍 Audit periodico</h4>
+      <p>Verifica delle pratiche adottate tramite schede, sopralluoghi, controlli documentali.</p>
+    </div>
+
+    <div style="flex: 1 1 250px; background: #f1f9f2; padding: 1rem; border-radius: 8px;">
+      <h4>📊 Indicatori ambientali</h4>
+      <p>Analisi dei dati raccolti (PM10, adesioni, residui gestiti) confrontati con gli obiettivi.</p>
+    </div>
+
+    <div style="flex: 1 1 250px; background: #fff5e5; padding: 1rem; border-radius: 8px;">
+      <h4>♻️ Azioni correttive</h4>
+      <p>Interventi correttivi/migliorativi a livello tecnico, informativo o normativo.</p>
+    </div>
+  </div>
+
+  <!-- Ciclo PDCA -->
+  <div style="text-align: center; margin: 2rem 0;">
+    <img src="C:\Users\assun\OneDrive - Università di Salerno\Documenti\Desktop\STTE\a\img\Immagine8.png" alt="Ciclo PDCA" style="width: 300px; border-radius: 8px;" />
+    <p style="font-size: 0.9rem; color: #666;">Schema del ciclo di miglioramento continuo (Plan-Do-Check-Act)</p>
+  </div>
+
+  <!-- Sezione download -->
+  <h3>📁 Documenti e risorse</h3>
+  <ul style="line-height: 2;">
+    <li><a href="documenti/report_riesame_2023.pdf" download>📄 Report annuale di riesame 2023</a></li>
+    <li><a href="documenti/scheda_autovalutazione.pdf" download>📝 Scheda di autovalutazione per agricoltori</a></li>
+    <li><a href="documenti/linee_guida_aggiornate.pdf" download>📘 Linee guida aggiornate sulla gestione residui</a></li>
+  </ul>
+<h3>📨 Contribuisci al miglioramento</h3>
+<p>Compila il seguente modulo per condividere la tua esperienza e contribuire al miglioramento della strategia ambientale nella Valle del Sabato:</p>
+
+<iframe src="https://forms.gle/NbWfwhKQy1vtZqGy8" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">Caricamento…</iframe>
+
+</section>
+
+
+
+</body>
+</html>
